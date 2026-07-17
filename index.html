@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaveMeApp - Universal Media Downloader</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div style="font-size:32px; background:rgba(34,197,94,0.15); padding:6px 12px; border-radius:12px;">📥</div>
+            <span>SaveMeApp</span>
+        </div>
+        <div class="menu">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">🚀 Free & Unlimited</div>
+        <h1>Download <span class="gradient-text">Videos</span> in Seconds</h1>
+        <p>Paste any link from Facebook, TikTok, YouTube, Instagram, Twitter & more</p>
+    </section>
+
+    <!-- Platform Badges -->
+    <div class="platforms">
+        <span class="platform">📘 Facebook</span>
+        <span class="platform">🎵 TikTok</span>
+        <span class="platform">▶️ YouTube</span>
+        <span class="platform">📸 Instagram</span>
+        <span class="platform">🐦 Twitter/X</span>
+    </div>
+
+    <!-- Download Section -->
+    <div class="container">
+        <div class="card">
+            <!-- ===== INPUT WITH PASTE BUTTON ===== -->
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input type="text" id="url" placeholder="Paste video URL here...">
+                    <button id="pasteBtn" class="paste-btn" title="Paste from clipboard">📋</button>
+                </div>
+            </div>
+
+            <!-- ===== QUALITY SELECTOR ===== -->
+            <div class="quality-section">
+                <label for="qualitySelect">🎯 Select Quality:</label>
+                <select id="qualitySelect">
+                    <option value="best">🔹 Best Available</option>
+                    <option value="2160p">4K (2160p)</option>
+                    <option value="1440p">2K (1440p)</option>
+                    <option value="1080p">Full HD (1080p)</option>
+                    <option value="720p">HD (720p)</option>
+                    <option value="480p">SD (480p)</option>
+                    <option value="360p">360p</option>
+                    <option value="240p">240p</option>
+                    <option value="144p">144p (Smallest)</option>
+                </select>
+            </div>
+
+            <!-- ===== DOWNLOAD BUTTON ===== -->
+            <button id="downloadBtn">
+                <span id="btnText">⬇️ Download Now</span>
+                <span id="btnLoader" class="loader-hidden">⏳</span>
+            </button>
+
+            <!-- Status & Progress -->
+            <div id="status"></div>
+            <div id="progress-bar" class="progress-hidden">
+                <div id="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat">
+                <h2 id="downloadCount">1M+</h2>
+                <p>Downloads</p>
+            </div>
+            <div class="stat">
+                <h2>50K+</h2>
+                <p>Active Users</p>
+            </div>
+            <div class="stat">
+                <h2>99.9%</h2>
+                <p>Success Rate</p>
+            </div>
+            <div class="stat">
+                <h2>⚡</h2>
+                <p>Instant Download</p>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="box">
+                <span class="icon">⚡</span>
+                <h3>Fast Download</h3>
+                <p>Lightning speed downloads</p>
+            </div>
+            <div class="box">
+                <span class="icon">🎥</span>
+                <h3>HD Quality</h3>
+                <p>Up to 4K support</p>
+            </div>
+            <div class="box">
+                <span class="icon">🔒</span>
+                <h3>100% Secure</h3>
+                <p>No data stored</p>
+            </div>
+            <div class="box">
+                <span class="icon">📱</span>
+                <h3>Mobile Friendly</h3>
+                <p>Works on all devices</p>
+            </div>
+            <div class="box">
+                <span class="icon">🌐</span>
+                <h3>Multi-Platform</h3>
+                <p>FB, TikTok, YouTube, IG, Twitter</p>
+            </div>
+            <div class="box">
+                <span class="icon">🆓</span>
+                <h3>100% Free</h3>
+                <p>No limits, no sign-up</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Developed with ❤️ by <b>Hyfal Technologies</b></p>
+            <p class="footer-small">© 2026 SaveMeApp. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
