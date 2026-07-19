@@ -55,7 +55,15 @@ ydl_opts = {
     'extract_flat': False,
     'prefer_insecure': True,
     'geo_bypass': True,
-    'user_agent': 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36'
+    'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'headers': {
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-us,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1'
+    },
+    'format_sort': ['res', 'codec']
 }
 
 try:
