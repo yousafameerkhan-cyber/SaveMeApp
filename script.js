@@ -33,6 +33,15 @@ button.addEventListener("click", async () => {
         return;
     }
 
+  if (data.success) {
+    // Show Interstitial Ad
+    if (typeof adsbygoogle !== 'undefined') {
+        // Interstitial ad ka code
+        console.log("📢 Showing Interstitial Ad");
+    }
+    // ... baqi code
+  }
+  
     // Check if valid (all platforms)
     const platforms = [
         'facebook.com', 'fb.watch', 'tiktok.com', 'youtube.com', 
