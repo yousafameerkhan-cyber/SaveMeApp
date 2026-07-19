@@ -4,7 +4,7 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -30,8 +30,11 @@ app.post('/download', (req, res) => {
     const format = qualityMap[selectedQuality] || 'best';
     console.log("📥 Downloading:", url);
 
-    // DIRECT DOWNLOAD FOLDER (Phone ki Gallery mein dikhegi)
-    const downloadDir = '/storage/emulated/0/Download';
+    // Render ke liye downloads folder
+    const downloadDir = path.join(__dirname, 'downloads');
+    if (!fs.existsSync(downloadDir)) {
+        fs.mkdirSync(downloadDir, { recursive: true });
+    }
     const uniqueId = Date.now();
 
     const command = `python3 -c "
@@ -69,18 +72,18 @@ except Exception as e:
 
     exec(command, (error, stdout, stderr) => {
         console.log("stdout:", stdout);
-        console.log("stderr:", stderr);
-
         if (error && !stdout.includes('SUCCESS:')) {
             return res.json({ success: false, message: 'Download failed: ' + stderr });
         }
         if (stdout.includes('SUCCESS:')) {
             const filename = stdout.split('SUCCESS:')[1].trim();
+            // Sirf filename bhejo (path nahi)
+            const fileBase = path.basename(filename);
             res.json({
                 success: true,
                 message: '✅ Download complete!',
-                file: filename,
-                downloadLink: '/download-file/' + encodeURIComponent(filename)
+                file: fileBase,
+                downloadLink: '/download-file/' + encodeURIComponent(fileBase)
             });
         } else {
             res.json({ success: false, message: '❌ Download failed: ' + stdout });
@@ -90,8 +93,13 @@ except Exception as e:
 
 app.get('/download-file/:filename', (req, res) => {
     const filename = decodeURIComponent(req.params.filename);
-    if (fs.existsSync(filename)) {
-        res.download(filename, (err) => { if (err) console.error(err); });
+    const downloadDir = path.join(__dirname, 'downloads');
+    const filePath = path.join(downloadDir, filename);
+    
+    if (fs.existsSync(filePath)) {
+        res.download(filePath, (err) => { 
+            if (err) console.error(err); 
+        });
     } else {
         res.status(404).send('File not found');
     }

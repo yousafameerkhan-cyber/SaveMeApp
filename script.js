@@ -100,3 +100,9 @@ function showStatus(message, color) {
 function toggleMenu() {
     document.querySelector('.menu').classList.toggle('active');
 }
+// ===== SERVICE WORKER REGISTER =====
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+        .then(() => console.log('✅ Service Worker Registered'))
+        .catch((err) => console.log('❌ Service Worker Error:', err));
+}

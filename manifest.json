@@ -1,0 +1,23 @@
+{
+  "name": "SaveMeApp - Video Downloader",
+  "short_name": "SaveMeApp",
+  "description": "Download videos from Facebook, TikTok, YouTube, Instagram & Twitter",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#0a0e1a",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
