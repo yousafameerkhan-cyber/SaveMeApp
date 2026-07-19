@@ -33,14 +33,23 @@ button.addEventListener("click", async () => {
         return;
     }
 
-  if (data.success) {
-    // Show Interstitial Ad
+if (data.success) {
+    showStatus("✅ Download complete!", "#22c55e");
+    
+    // ===== INTERSTITIAL AD SHOW =====
     if (typeof adsbygoogle !== 'undefined') {
-        // Interstitial ad ka code
-        console.log("📢 Showing Interstitial Ad");
+        try {
+            console.log("📢 Showing Interstitial Ad");
+            // Interstitial ad trigger
+            // (Note: Interstitial ads require additional SDK setup)
+        } catch(e) {
+            console.log("Ad error:", e);
+        }
     }
-    // ... baqi code
-  }
+    
+    // Auto download
+    window.location.href = data.downloadLink;
+}
   
     // Check if valid (all platforms)
     const platforms = [
